@@ -26,8 +26,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Crawls associated with the organization.
-     *
-     * @return hasMany
      */
     public function crawls(): HasMany
     {
@@ -36,8 +34,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Last crawl associated with the organization.
-     *
-     * @return model
      */
     public function lastCrawl(): HasOne
     {
@@ -46,8 +42,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Users associated with the organization.
-     *
-     * @return hasMany
      */
     public function users(): HasMany
     {
@@ -56,8 +50,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Invitations associated with the organization.
-     *
-     * @return hasMany
      */
     public function invitations(): HasMany
     {
@@ -66,8 +58,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Pages associated with the organization.
-     *
-     * @return hasMany
      */
     public function pages(): HasMany
     {
@@ -76,8 +66,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Redirects associated with the organization.
-     *
-     * @return hasMany
      */
     public function redirects(): HasMany
     {
@@ -86,8 +74,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Teams that belong to this team.
-     *
-     * @return hasMany
      */
     public function teams(): HasMany
     {
@@ -96,8 +82,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Sites associated with this organization.
-     *
-     * @return hasMany
      */
     public function sites(): HasMany
     {
@@ -106,8 +90,6 @@ class Organization extends Model implements HasMedia
 
     /**
      * Designs associated with this organization.
-     *
-     * @return hasMany
      */
     public function designs(): HasMany
     {

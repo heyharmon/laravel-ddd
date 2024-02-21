@@ -27,8 +27,6 @@ class Site extends Model
 
     /**
      * Get the pages associated with this site.
-     *
-     * @return hasMany
      */
     public function pages(): HasMany
     {

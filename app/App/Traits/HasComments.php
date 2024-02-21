@@ -9,8 +9,6 @@ trait HasComments
 {
     /**
      * Get comments using polymorphic relationship
-     *
-     * @return mixed
      */
     public function comments(): MorphMany
     {
