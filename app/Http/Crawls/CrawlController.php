@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Crawls;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 // Models
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
@@ -24,7 +25,7 @@ class CrawlController extends Controller
         return CrawlResource::collection($crawls);
     }
 
-    public function store(Organization $organization, CrawlStoreRequest $request, Crawler $crawler)
+    public function store(Organization $organization, CrawlStoreRequest $request, Crawler $crawler): JsonResponse
     {
         $service = $crawler->crawlSite($request->url);
 
@@ -48,7 +49,7 @@ class CrawlController extends Controller
         return new CrawlResource($crawl);
     }
 
-    public function destroy(Organization $organization, Crawl $crawl, Crawler $crawler)
+    public function destroy(Organization $organization, Crawl $crawl, Crawler $crawler): JsonResponse
     {
         $crawler->abortCrawl($crawl->crawl_id);
 

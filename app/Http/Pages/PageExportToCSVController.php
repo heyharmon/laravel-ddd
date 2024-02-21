@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Pages;
 
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Organizations\Organization;
 // Vendors
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 
 class PageExportToCSVController extends Controller
 {
-    public function export(Organization $organization, Request $request)
+    public function export(Organization $organization, Request $request): StreamedResponse
     {
         $fileName = $organization->slug.'-pages.csv';
 

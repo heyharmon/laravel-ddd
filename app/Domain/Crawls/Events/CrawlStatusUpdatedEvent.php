@@ -29,7 +29,7 @@ class CrawlStatusUpdatedEvent implements ShouldBroadcastNow
      *
      * @return string Event name
      */
-    public function broadcastAs()
+    public function broadcastAs(): string
     {
         return 'CrawlStatusUpdated';
     }

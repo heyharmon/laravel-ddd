@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Crawls;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 // Models
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
@@ -12,7 +13,7 @@ use DDD\Domain\Organizations\Organization;
 
 class CrawlResultsImportController extends Controller
 {
-    public function import(Organization $organization, Crawl $crawl, Crawler $crawler)
+    public function import(Organization $organization, Crawl $crawl, Crawler $crawler): JsonResponse
     {
         $results = $crawler->getResults($crawl->results_id);
 

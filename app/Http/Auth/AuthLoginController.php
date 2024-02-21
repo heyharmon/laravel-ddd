@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Auth;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Organizations\Resources\OrganizationResource;
 // Requests
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthLoginController extends Controller
 {
-    public function __invoke(AuthLoginRequest $request)
+    public function __invoke(AuthLoginRequest $request): JsonResponse
     {
         if (! Auth::attempt($request->validated())) {
             return response()->json([

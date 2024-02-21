@@ -2,6 +2,7 @@
 
 namespace DDD\Http\Pages;
 
+use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Organizations\Organization;
 // Vendors
@@ -49,7 +50,7 @@ class PageController extends Controller
         return new PageResource($page->load(['status', 'category', 'user']));
     }
 
-    public function update(Organization $organization, Request $request)
+    public function update(Organization $organization, Request $request): JsonResponse
     {
         $pages = Page::whereIn('id', $request->ids)->get();
 
@@ -62,7 +63,7 @@ class PageController extends Controller
         ], 200);
     }
 
-    public function destroy(Organization $organization, Request $request)
+    public function destroy(Organization $organization, Request $request): JsonResponse
     {
         Page::whereIn('id', $request->ids)->delete();
 

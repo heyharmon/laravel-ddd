@@ -36,7 +36,7 @@ class CheckCrawlStatusJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Crawler $crawler)
+    public function handle(Crawler $crawler): void
     {
         $crawl = $crawler->getStatus(
             $this->crawl->crawl_id,
