@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Meta;
 
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,7 @@ class Meta extends Model
         'id',
     ];
 
-    public function metable()
+    public function metable(): MorphTo
     {
         return $this->morphTo();
     }

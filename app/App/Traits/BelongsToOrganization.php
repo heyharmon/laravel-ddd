@@ -2,6 +2,7 @@
 
 namespace DDD\App\Traits;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 trait BelongsToOrganization
@@ -22,7 +23,7 @@ trait BelongsToOrganization
      *
      * @return belongsTo
      */
-    public function organization()
+    public function organization(): BelongsTo
     {
         return $this->belongsTo(\DDD\Domain\Organizations\Organization::class);
     }

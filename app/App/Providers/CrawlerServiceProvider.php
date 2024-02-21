@@ -13,7 +13,7 @@ class CrawlerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(CrawlerInterface::class, function ($app) {
             return new CrawlerApify(
@@ -29,7 +29,7 @@ class CrawlerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }

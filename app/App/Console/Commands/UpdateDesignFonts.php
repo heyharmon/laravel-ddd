@@ -26,7 +26,7 @@ class UpdateDesignFonts extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $designs = Design::all();
 

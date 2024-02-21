@@ -13,7 +13,7 @@ class PagesSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $pages = [
             [

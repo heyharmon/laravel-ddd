@@ -13,7 +13,7 @@ class DesignsSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Design::create([
             'organization_id' => 1,

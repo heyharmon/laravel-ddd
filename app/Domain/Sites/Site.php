@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Sites;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\Domain\Sites\Casts\LaunchInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,7 +30,7 @@ class Site extends Model
      *
      * @return hasMany
      */
-    public function pages()
+    public function pages(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Pages\Page::class);
     }

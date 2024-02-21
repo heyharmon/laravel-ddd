@@ -2,6 +2,8 @@
 
 namespace DDD\Domain\Users;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\Domain\Users\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -55,12 +57,12 @@ class User extends Authenticatable
     ];
 
     // TODO: Move to a one to many (user belongs to many orgs)
-    public function organization()
+    public function organization(): BelongsTo
     {
         return $this->belongsTo(\DDD\Domain\Organizations\Organization::class);
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(\DDD\Domain\Comments\Comment::class);
     }

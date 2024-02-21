@@ -2,6 +2,7 @@
 
 namespace DDD\Domain\Pages;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\BelongsToUser;
 use DDD\App\Traits\IsCategorizable;
@@ -28,7 +29,7 @@ class Page extends Model
         'id',
     ];
 
-    public function site()
+    public function site(): BelongsTo
     {
         return $this->belongsTo(Site::class);
     }
