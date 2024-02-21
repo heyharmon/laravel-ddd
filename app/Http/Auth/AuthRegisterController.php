@@ -2,11 +2,11 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Users\User;
-// Models
 use DDD\Http\Auth\Requests\AuthRegisterRequest;
+// Models
+use Illuminate\Http\JsonResponse;
 // Requests
 use Illuminate\Support\Facades\Hash;
 

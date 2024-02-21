@@ -2,11 +2,11 @@
 
 namespace DDD\Domain\Pages\Resources;
 
-use Illuminate\Http\Request;
 use DDD\Domain\Categories\Resources\CategoryResource;
-// Resources
 use DDD\Domain\Statuses\Resources\StatusResource;
+// Resources
 use DDD\Domain\Users\Resources\UserResource;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PageResource extends JsonResource

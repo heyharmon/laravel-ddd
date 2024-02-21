@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Media\Resources;
 
-use Illuminate\Http\Request;
 use DDD\Domain\Tags\Resources\TagResource;
+use Illuminate\Http\Request;
 // Resources
 use Illuminate\Http\Resources\Json\JsonResource;
 

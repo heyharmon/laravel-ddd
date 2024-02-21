@@ -2,11 +2,11 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Pages\Page;
-// Models
 use DDD\Domain\Sites\Site;
+// Models
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PageTagController extends Controller

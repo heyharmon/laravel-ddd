@@ -2,14 +2,14 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Invitations\Invitation;
-// Models
 use DDD\Domain\Organizations\Resources\OrganizationResource;
+// Models
 use DDD\Domain\Users\User;
-// Requests
 use DDD\Http\Auth\Requests\AuthRegisterWithInvitationRequest;
+// Requests
+use Illuminate\Http\JsonResponse;
 // Resources
 use Illuminate\Support\Facades\Hash;
 

@@ -2,19 +2,19 @@
 
 namespace DDD\Http\Crawls;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
-// Models
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
+// Models
 use DDD\Domain\Crawls\Crawl;
-// Services
 use DDD\Domain\Crawls\Jobs\CheckCrawlStatusJob;
-// Jobs
+// Services
 use DDD\Domain\Crawls\Requests\CrawlStoreRequest;
-// Requests
+// Jobs
 use DDD\Domain\Crawls\Resources\CrawlResource;
-// Resources
+// Requests
 use DDD\Domain\Organizations\Organization;
+// Resources
+use Illuminate\Http\JsonResponse;
 
 class CrawlController extends Controller
 {

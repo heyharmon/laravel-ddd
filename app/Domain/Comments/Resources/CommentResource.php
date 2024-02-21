@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Comments\Resources;
 
-use Illuminate\Http\Request;
 use DDD\Domain\Users\Resources\UserResource;
+use Illuminate\Http\Request;
 // Resources
 use Illuminate\Http\Resources\Json\JsonResource;
 

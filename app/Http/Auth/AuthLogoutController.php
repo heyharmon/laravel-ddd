@@ -2,8 +2,8 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AuthLogoutController extends Controller

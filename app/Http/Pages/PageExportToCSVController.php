@@ -2,13 +2,13 @@
 
 namespace DDD\Http\Pages;
 
-use Symfony\Component\HttpFoundation\StreamedResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Organizations\Organization;
+use Illuminate\Http\Request;
 // Vendors
 
 // Models
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class PageExportToCSVController extends Controller
 {

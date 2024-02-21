@@ -2,8 +2,8 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use DDD\Domain\Comments\Comment;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasComments
 {

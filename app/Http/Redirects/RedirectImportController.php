@@ -2,10 +2,10 @@
 
 namespace DDD\Http\Redirects;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
-// Models
 use DDD\Domain\Organizations\Organization;
+// Models
+use Illuminate\Http\JsonResponse;
 
 class RedirectImportController extends Controller
 {

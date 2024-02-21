@@ -2,14 +2,14 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Organizations\Organization;
-// Vendors
 use DDD\Domain\Pages\Page;
+// Vendors
 use DDD\Domain\Pages\Requests\PageStoreRequest;
-// Models
 use DDD\Domain\Pages\Resources\PageResource;
+// Models
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 // Requests
 use Spatie\QueryBuilder\AllowedFilter;

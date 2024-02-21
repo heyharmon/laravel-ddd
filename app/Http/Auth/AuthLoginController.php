@@ -2,11 +2,11 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\JsonResponse;
 use DDD\App\Controllers\Controller;
 use DDD\Domain\Organizations\Resources\OrganizationResource;
-// Requests
 use DDD\Http\Auth\Requests\AuthLoginRequest;
+// Requests
+use Illuminate\Http\JsonResponse;
 // Resources
 use Illuminate\Support\Facades\Auth;
 

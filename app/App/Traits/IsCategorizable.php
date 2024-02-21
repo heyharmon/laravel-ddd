@@ -2,9 +2,9 @@
 
 namespace DDD\App\Traits;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use DDD\Domain\Categories\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 // Domains
 use Illuminate\Support\Str;
 

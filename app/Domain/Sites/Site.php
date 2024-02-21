@@ -2,12 +2,12 @@
 
 namespace DDD\Domain\Sites;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\Domain\Sites\Casts\LaunchInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// Casts
 use Illuminate\Database\Eloquent\Model;
+// Casts
+use Illuminate\Database\Eloquent\Relations\HasMany;
 // Traits
 use Illuminate\Database\Eloquent\SoftDeletes;
 

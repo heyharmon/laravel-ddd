@@ -2,17 +2,17 @@
 
 namespace DDD\Domain\Pages;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\BelongsToUser;
 use DDD\App\Traits\IsCategorizable;
-// Domains
 use DDD\App\Traits\IsStatusable;
-// Traits
+// Domains
 use DDD\App\Traits\IsTaggable;
+// Traits
 use DDD\Domain\Sites\Site;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model

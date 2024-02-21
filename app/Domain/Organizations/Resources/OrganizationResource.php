@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Organizations\Resources;
 
-use Illuminate\Http\Request;
 use DDD\Domain\Meta\Resources\MetaResource;
+use Illuminate\Http\Request;
 // Resources
 use Illuminate\Http\Resources\Json\JsonResource;
 
