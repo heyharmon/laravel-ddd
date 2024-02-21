@@ -2,26 +2,22 @@
 
 namespace DDD\Domain\Crawls\Jobs;
 
+use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
+use DDD\Domain\Crawls\Crawl;
+use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-
 // Domains
-use DDD\Domain\Crawls\Crawl;
-
+use Illuminate\Foundation\Bus\Dispatchable;
 // Events
-use DDD\Domain\Crawls\Events\CrawlStatusUpdatedEvent;
-
+use Illuminate\Queue\InteractsWithQueue;
 // Services
-use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
+use Illuminate\Queue\SerializesModels;
 
 class CheckCrawlStatusJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Batchable, Queueable, SerializesModels;
+    use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $crawl;
 
@@ -37,10 +33,8 @@ class CheckCrawlStatusJob implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle(Crawler $crawler)
+    public function handle(Crawler $crawler): void
     {
         $crawl = $crawler->getStatus(
             $this->crawl->crawl_id,

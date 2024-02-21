@@ -2,21 +2,20 @@
 
 namespace DDD\Domain\Sites;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
-
-// Casts
-use DDD\Domain\Sites\Casts\LaunchInfo;
-
-// Traits
 use DDD\App\Traits\BelongsToOrganization;
+use DDD\Domain\Sites\Casts\LaunchInfo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+// Casts
+use Illuminate\Database\Eloquent\Relations\HasMany;
+// Traits
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Site extends Model
 {
-    use HasFactory,
-        SoftDeletes,
-        BelongsToOrganization;
+    use BelongsToOrganization,
+        HasFactory,
+        SoftDeletes;
 
     protected $guarded = [
         'id',
@@ -28,11 +27,9 @@ class Site extends Model
 
     /**
      * Get the pages associated with this site.
-     *
-     * @return hasMany
      */
-    public function pages()
+    public function pages(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Pages\Page');
+        return $this->hasMany(\DDD\Domain\Pages\Page::class);
     }
 }

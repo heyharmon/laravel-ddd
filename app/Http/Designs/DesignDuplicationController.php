@@ -2,19 +2,15 @@
 
 namespace DDD\Http\Designs;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use DDD\App\Controllers\Controller;
-
-// Models
-use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Designs\Design;
-
-// Requests
+// Models
 use DDD\Domain\Designs\Requests\DesignStoreRequest;
-
-// Resources
 use DDD\Domain\Designs\Resources\DesignResource;
+// Requests
+use DDD\Domain\Organizations\Organization;
+// Resources
+use Illuminate\Support\Str;
 
 class DesignDuplicationController extends Controller
 {

@@ -2,22 +2,19 @@
 
 namespace DDD\Domain\Pages\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
-
-// Resources
-use DDD\Domain\Statuses\Resources\StatusResource;
 use DDD\Domain\Categories\Resources\CategoryResource;
+use DDD\Domain\Statuses\Resources\StatusResource;
+// Resources
 use DDD\Domain\Users\Resources\UserResource;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class PageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,

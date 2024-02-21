@@ -2,23 +2,22 @@
 
 namespace Tests\Unit\Domain\Organizations;
 
-use Tests\TestCase;
-
+use DDD\Domain\Files\File;
 // Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Users\User;
 use DDD\Domain\Teams\Team;
-use DDD\Domain\Files\File;
+use DDD\Domain\Users\User;
+use Tests\TestCase;
 
 class OrganizationTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
     }
 
     /** @test */
-    public function it_has_a_slug()
+    public function it_has_a_slug(): void
     {
         $organization = Organization::factory()->create();
 
@@ -26,7 +25,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_uses_the_slug_for_the_route_key_name()
+    public function it_uses_the_slug_for_the_route_key_name(): void
     {
         $organization = Organization::factory()->create();
 
@@ -34,7 +33,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_users()
+    public function it_has_many_users(): void
     {
         $organization = Organization::factory()
             ->has(User::factory())
@@ -44,7 +43,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_teams()
+    public function it_has_many_teams(): void
     {
         $organization = Organization::factory()
             ->has(Team::factory())
@@ -54,7 +53,7 @@ class OrganizationTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_files()
+    public function it_has_many_files(): void
     {
         $organization = Organization::factory()
             ->has(File::factory())

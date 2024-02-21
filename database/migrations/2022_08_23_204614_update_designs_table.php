@@ -8,23 +8,19 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('designs', function (Blueprint $table) {
             $table->renameColumn('designer', 'designer_name');
             $table->string('designer_email')->after('designer');
-       });
+        });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('designs', function (Blueprint $table) {
             $table->renameColumn('designer_name', 'designer');

@@ -2,16 +2,14 @@
 
 namespace DDD\Http\Redirects;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Redirects\Redirect;
+// Models
+use Illuminate\Http\JsonResponse;
 
 class RedirectImportController extends Controller
 {
-    public function import(Organization $organization, Crawl $crawl, Crawler $crawler)
+    public function import(Organization $organization, Crawl $crawl, Crawler $crawler): JsonResponse
     {
         $results = $crawler->getResults($crawl->results_id);
 
@@ -21,10 +19,10 @@ class RedirectImportController extends Controller
             $organization->pages()->updateOrCreate(
                 ['url' => $cleanDestinationUrl],
                 [
-                    'http_status'   => $result['http_status'],
-                    'title'         => $result['title'],
-                    'wordcount'     => $result['wordcount'],
-                    'url'           => $cleanDestinationUrl,
+                    'http_status' => $result['http_status'],
+                    'title' => $result['title'],
+                    'wordcount' => $result['wordcount'],
+                    'url' => $cleanDestinationUrl,
                 ]
             );
         }

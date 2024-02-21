@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
 use DDD\Http\Auth\AuthLoginController;
 use DDD\Http\Auth\AuthLogoutController;
 use DDD\Http\Auth\AuthMeController;
@@ -13,22 +10,23 @@ use DDD\Http\Crawls\CrawlController;
 use DDD\Http\Crawls\CrawlResultsController;
 use DDD\Http\Crawls\CrawlResultsImportController;
 use DDD\Http\Designs\DesignController;
-use DDD\Http\Designs\DesignMediaController;
 use DDD\Http\Designs\DesignDuplicationController;
+use DDD\Http\Designs\DesignMediaController;
 use DDD\Http\Invitations\InvitationController;
 use DDD\Http\Media\MediaController;
 use DDD\Http\Media\MediaDownloadController;
-use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Organizations\OrganizationCommentController;
+use DDD\Http\Organizations\OrganizationController;
 use DDD\Http\Pages\PageController;
 use DDD\Http\Pages\PageExportToCSVController;
-// use DDD\Http\Pages\PageTagController;
 use DDD\Http\Redirects\RedirectController;
+// use DDD\Http\Pages\PageTagController;
 use DDD\Http\Sites\SiteController;
 use DDD\Http\Statuses\StatusController;
 use DDD\Http\Tags\TagController;
 use DDD\Http\Teams\TeamController;
 use DDD\Http\Users\UserController;
+use Illuminate\Support\Facades\Route;
 
 // TODO: Alphabetize routes
 
@@ -50,7 +48,7 @@ Route::post('auth/register', AuthRegisterController::class);
 Route::post('auth/register/invitation/{invitation:uuid}', AuthRegisterWithInvitationController::class);
 
 // Public - Designs
-Route::prefix('{organization:slug}')->group(function() {
+Route::prefix('{organization:slug}')->group(function () {
     Route::get('/designs', [DesignController::class, 'index']);
     Route::post('/designs', [DesignController::class, 'store']);
     Route::get('/designs/{design:uuid}', [DesignController::class, 'show']);
@@ -59,12 +57,12 @@ Route::prefix('{organization:slug}')->group(function() {
     Route::delete('/designs/{design:uuid}', [DesignController::class, 'destroy']);
 
     // Public - Duplicate design
-    Route::prefix('/designs/{design:uuid}')->group(function() {
+    Route::prefix('/designs/{design:uuid}')->group(function () {
         Route::post('/duplicate', [DesignDuplicationController::class, 'duplicate']);
     });
 
     // Public - Design media
-    Route::prefix('/designs/{design:uuid}')->group(function() {
+    Route::prefix('/designs/{design:uuid}')->group(function () {
         Route::post('/media', [DesignMediaController::class, 'store']);
     });
 });
@@ -73,12 +71,12 @@ Route::prefix('{organization:slug}')->group(function() {
 Route::get('{organization:slug}/invitations/{invitation:uuid}', [InvitationController::class, 'show']);
 
 // Public - Organization - Comments
-Route::prefix('/organizations/{organization:slug}')->group(function() {
+Route::prefix('/organizations/{organization:slug}')->group(function () {
     Route::get('/comments', [OrganizationCommentController::class, 'index']);
 });
 
 // Public - Media
-Route::prefix('/{organization:slug}')->group(function() {
+Route::prefix('/{organization:slug}')->group(function () {
     Route::get('/media', [MediaController::class, 'index']);
     Route::get('/media/{media}', [MediaController::class, 'show']);
 });
@@ -87,17 +85,17 @@ Route::prefix('/{organization:slug}')->group(function() {
 Route::get('/media/{media:uuid}', [MediaDownloadController::class, 'download']);
 
 // Public - Pages export to CSV
-Route::prefix('{organization:slug}/pages/export')->group(function() {
+Route::prefix('{organization:slug}/pages/export')->group(function () {
     Route::get('/csv', [PageExportToCSVController::class, 'export']);
 });
 
-Route::middleware('auth:sanctum')->group(function() {
+Route::middleware('auth:sanctum')->group(function () {
     // Auth
     Route::post('auth/logout', AuthLogoutController::class);
     Route::get('auth/me', AuthMeController::class);
 
     // Categories
-    Route::prefix('categories')->group(function() {
+    Route::prefix('categories')->group(function () {
         Route::get('/', [CategoryController::class, 'index']);
         Route::post('/', [CategoryController::class, 'store']);
         Route::get('/{category:slug}', [CategoryController::class, 'show']);
@@ -106,32 +104,32 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Crawls
-    Route::prefix('{organization:slug}/crawls')->group(function() {
+    Route::prefix('{organization:slug}/crawls')->group(function () {
         Route::get('/', [CrawlController::class, 'index']);
         Route::post('/', [CrawlController::class, 'store']);
         Route::get('/{crawl}', [CrawlController::class, 'show']);
         Route::delete('/{crawl}', [CrawlController::class, 'destroy']);
 
         // Crawl results
-        Route::prefix('/{crawl}')->group(function() {
+        Route::prefix('/{crawl}')->group(function () {
             Route::get('/results', [CrawlResultsController::class, 'show']);
         });
 
         // Crawl results import
-        Route::prefix('/{crawl}')->group(function() {
+        Route::prefix('/{crawl}')->group(function () {
             Route::get('/import', [CrawlResultsImportController::class, 'import']);
         });
     });
 
     // Invitations
-    Route::prefix('{organization:slug}')->group(function() {
+    Route::prefix('{organization:slug}')->group(function () {
         Route::get('invitations', [InvitationController::class, 'index']);
         Route::post('invitations', [InvitationController::class, 'store']);
         Route::delete('invitations/{invitation:uuid}', [InvitationController::class, 'destroy']);
     });
 
     // Media
-    Route::prefix('{organization:slug}')->group(function() {
+    Route::prefix('{organization:slug}')->group(function () {
         Route::post('/media', [MediaController::class, 'store']);
         Route::delete('media/{media}', [MediaController::class, 'destroy']);
     });
@@ -144,13 +142,13 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::delete('organizations/{organization:slug}', [OrganizationController::class, 'destroy']);
 
     // Organization - Comments
-    Route::prefix('/organizations/{organization:slug}')->group(function() {
+    Route::prefix('/organizations/{organization:slug}')->group(function () {
         Route::post('/comments', [OrganizationCommentController::class, 'store']);
         Route::delete('comments/{comment}', [OrganizationCommentController::class, 'destroy']);
     });
 
     // Pages
-    Route::prefix('{organization:slug}/pages')->group(function() {
+    Route::prefix('{organization:slug}/pages')->group(function () {
         Route::get('/', [PageController::class, 'index']);
         Route::post('/', [PageController::class, 'store']);
         Route::get('/{page}', [PageController::class, 'show']);
@@ -164,7 +162,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Redirects
-    Route::prefix('{organization:slug}/redirects')->group(function() {
+    Route::prefix('{organization:slug}/redirects')->group(function () {
         Route::get('/', [RedirectController::class, 'index']);
         Route::post('/', [RedirectController::class, 'store']);
         Route::get('/{redirect}', [RedirectController::class, 'show']);
@@ -173,7 +171,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Sites
-    Route::prefix('{organization:slug}/sites')->group(function() {
+    Route::prefix('{organization:slug}/sites')->group(function () {
         Route::get('/', [SiteController::class, 'index']);
         Route::post('/', [SiteController::class, 'store']);
         Route::get('/{site}', [SiteController::class, 'show']);
@@ -182,7 +180,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Statuses
-    Route::prefix('statuses')->group(function() {
+    Route::prefix('statuses')->group(function () {
         Route::get('/', [StatusController::class, 'index']);
         Route::post('/', [StatusController::class, 'store']);
         Route::get('/{status}', [StatusController::class, 'show']);
@@ -191,7 +189,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Tags
-    Route::prefix('tags')->group(function() {
+    Route::prefix('tags')->group(function () {
         Route::get('/', [TagController::class, 'index']);
         Route::post('/', [TagController::class, 'store']);
         Route::get('/{tag:slug}', [TagController::class, 'show']);
@@ -200,7 +198,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Teams
-    Route::prefix('{organization:slug}')->group(function() {
+    Route::prefix('{organization:slug}')->group(function () {
         Route::get('/teams', [TeamController::class, 'index']);
         Route::post('/teams', [TeamController::class, 'store']);
         Route::get('/teams/{team:slug}', [TeamController::class, 'show']);
@@ -209,7 +207,7 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     // Users
-    Route::prefix('{organization:slug}')->group(function() {
+    Route::prefix('{organization:slug}')->group(function () {
         Route::get('users', [UserController::class, 'index']);
     });
 });

@@ -2,35 +2,34 @@
 
 namespace DDD\Domain\Pages;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
-
-// Domains
-use DDD\Domain\Sites\Site;
-
-// Traits
 use DDD\App\Traits\BelongsToOrganization;
 use DDD\App\Traits\BelongsToUser;
 use DDD\App\Traits\IsCategorizable;
 use DDD\App\Traits\IsStatusable;
+// Domains
 use DDD\App\Traits\IsTaggable;
+// Traits
+use DDD\Domain\Sites\Site;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
-    use HasFactory,
-        SoftDeletes,
-        BelongsToOrganization,
+    use BelongsToOrganization,
         BelongsToUser,
+        HasFactory,
         IsCategorizable,
         IsStatusable,
-        IsTaggable;
+        IsTaggable,
+        SoftDeletes;
 
     protected $guarded = [
         'id',
     ];
 
-    public function site()
+    public function site(): BelongsTo
     {
         return $this->belongsTo(Site::class);
     }

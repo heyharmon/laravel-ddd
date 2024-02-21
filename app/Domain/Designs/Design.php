@@ -2,28 +2,25 @@
 
 namespace DDD\Domain\Designs;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
-
+use DDD\App\Traits\HasParents;
+use DDD\App\Traits\HasUuid;
+use DDD\Domain\Designs\Casts\DesignVariables;
 // Vendors
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+// Casts
+use Illuminate\Database\Eloquent\SoftDeletes;
+// Traits
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-
-// Casts
-use DDD\Domain\Designs\Casts\DesignVariables;
-
-// Traits
-use DDD\App\Traits\HasUuid;
-use DDD\App\Traits\HasParents;
 
 class Design extends Model implements HasMedia
 {
     use HasFactory,
-        HasUuid,
         HasParents,
-        SoftDeletes,
-        InteractsWithMedia;
+        HasUuid,
+        InteractsWithMedia,
+        SoftDeletes;
 
     protected $guarded = [
         'id',
@@ -40,8 +37,7 @@ class Design extends Model implements HasMedia
         static::creating(function (Model $model) {
             $count = self::where('organization_id', $model->organization_id)->withTrashed()->count();
 
-            $model->title = 'Style #' . $count + 1;
+            $model->title = 'Style #'.$count + 1;
         });
     }
-
 }

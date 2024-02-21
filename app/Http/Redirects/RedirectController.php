@@ -2,17 +2,13 @@
 
 namespace DDD\Http\Redirects;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
 // Models
 use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Redirects\Redirect;
-
 // Requests
 use DDD\Domain\Redirects\Requests\RedirectStoreRequest;
 use DDD\Domain\Redirects\Requests\RedirectUpdateRequest;
-
 // Resources
 use DDD\Domain\Redirects\Resources\RedirectResource;
 

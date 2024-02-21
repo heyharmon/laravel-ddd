@@ -2,115 +2,97 @@
 
 namespace DDD\Domain\Organizations;
 
+use DDD\App\Traits\HasComments;
+use DDD\App\Traits\HasMeta;
+use DDD\App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
 // Vendors
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+// Traits
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-// Traits
-use DDD\App\Traits\HasComments;
-use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\HasMeta;
-
 class Organization extends Model implements HasMedia
 {
-    use HasFactory,
-        InteractsWithMedia,
-        HasComments,
+    use HasComments,
+        HasFactory,
+        HasMeta,
         HasSlug,
-        HasMeta;
+        InteractsWithMedia;
 
     protected $guarded = ['id', 'slug'];
 
     /**
      * Crawls associated with the organization.
-     *
-     * @return hasMany
      */
-    public function crawls()
+    public function crawls(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Crawls\Crawl');
+        return $this->hasMany(\DDD\Domain\Crawls\Crawl::class);
     }
 
     /**
      * Last crawl associated with the organization.
-     *
-     * @return model
      */
-    public function lastCrawl()
+    public function lastCrawl(): HasOne
     {
-        return $this->hasOne('DDD\Domain\Crawls\Crawl')->latest();
+        return $this->hasOne(\DDD\Domain\Crawls\Crawl::class)->latest();
     }
 
     /**
      * Users associated with the organization.
-     *
-     * @return hasMany
      */
-    public function users()
+    public function users(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Users\User');
+        return $this->hasMany(\DDD\Domain\Users\User::class);
     }
 
     /**
      * Invitations associated with the organization.
-     *
-     * @return hasMany
      */
-    public function invitations()
+    public function invitations(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Invitations\Invitation');
+        return $this->hasMany(\DDD\Domain\Invitations\Invitation::class);
     }
 
     /**
      * Pages associated with the organization.
-     *
-     * @return hasMany
      */
-    public function pages()
+    public function pages(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Pages\Page');
+        return $this->hasMany(\DDD\Domain\Pages\Page::class);
     }
 
     /**
      * Redirects associated with the organization.
-     *
-     * @return hasMany
      */
-    public function redirects()
+    public function redirects(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Redirects\Redirect');
+        return $this->hasMany(\DDD\Domain\Redirects\Redirect::class);
     }
 
     /**
      * Teams that belong to this team.
-     *
-     * @return hasMany
      */
-    public function teams()
+    public function teams(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Teams\Team');
+        return $this->hasMany(\DDD\Domain\Teams\Team::class);
     }
 
     /**
      * Sites associated with this organization.
-     *
-     * @return hasMany
      */
-    public function sites()
+    public function sites(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Sites\Site');
+        return $this->hasMany(\DDD\Domain\Sites\Site::class);
     }
 
     /**
      * Designs associated with this organization.
-     *
-     * @return hasMany
      */
-    public function designs()
+    public function designs(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Designs\Design');
+        return $this->hasMany(\DDD\Domain\Designs\Design::class);
     }
 }

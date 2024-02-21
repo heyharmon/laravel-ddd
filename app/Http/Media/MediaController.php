@@ -2,21 +2,18 @@
 
 namespace DDD\Http\Media;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Media\Media;
+use DDD\Domain\Media\Requests\StoreMediaRequest;
 // Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-
+use DDD\Domain\Media\Resources\MediaResource;
 // Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Media\Media;
-
+use Illuminate\Http\JsonResponse;
 // Requests
-use DDD\Domain\Media\Requests\StoreMediaRequest;
-
+use Illuminate\Http\Request;
 // Resources
-use DDD\Domain\Media\Resources\MediaResource;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class MediaController extends Controller
 {
@@ -46,7 +43,7 @@ class MediaController extends Controller
         return new MediaResource($media->load('tags'));
     }
 
-    public function destroy(Organization $organization, Media $media)
+    public function destroy(Organization $organization, Media $media): JsonResponse
     {
         $media->delete();
 

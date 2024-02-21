@@ -4,6 +4,7 @@ namespace DDD\Domain\Meta;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Meta extends Model
 {
@@ -13,7 +14,7 @@ class Meta extends Model
         'id',
     ];
 
-    public function metable()
+    public function metable(): MorphTo
     {
         return $this->morphTo();
     }
@@ -22,7 +23,8 @@ class Meta extends Model
     {
         if (is_array($value)) {
             $this->attributes['value'] = json_encode($value);
-            return ;
+
+            return;
         }
 
         $this->attributes['value'] = $value;
@@ -30,7 +32,7 @@ class Meta extends Model
 
     public function getValueAttribute($value)
     {
-        $decodeValue = json_decode($value,true);
+        $decodeValue = json_decode($value, true);
 
         if (is_array($decodeValue)) {
             return $decodeValue;

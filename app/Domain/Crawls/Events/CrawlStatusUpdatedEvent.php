@@ -2,16 +2,13 @@
 
 namespace DDD\Domain\Crawls\Events;
 
-use Illuminate\Broadcasting\Channel;
+use DDD\Domain\Crawls\Crawl;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Queue\SerializesModels;
-
 // Domains
-use DDD\Domain\Crawls\Crawl;
+use Illuminate\Queue\SerializesModels;
 
 class CrawlStatusUpdatedEvent implements ShouldBroadcastNow
 {
@@ -30,9 +27,9 @@ class CrawlStatusUpdatedEvent implements ShouldBroadcastNow
     /**
      * Overwrite the event name.
      *
-     * @return String Event name
+     * @return string Event name
      */
-    public function broadcastAs()
+    public function broadcastAs(): string
     {
         return 'CrawlStatusUpdated';
     }
@@ -44,6 +41,6 @@ class CrawlStatusUpdatedEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('DDD.Domain.Crawls.Crawl.' . $this->crawl->id);
+        return new PrivateChannel('DDD.Domain.Crawls.Crawl.'.$this->crawl->id);
     }
 }

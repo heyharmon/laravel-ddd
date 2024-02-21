@@ -2,26 +2,26 @@
 
 namespace DDD\Domain\Users;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
-// Enums
-use DDD\Domain\Users\Enums\RoleEnum;
-
-// Traits
-use Laravel\Sanctum\HasApiTokens;
 use DDD\App\Traits\BelongsToOrganization;
+use DDD\Domain\Users\Enums\RoleEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+// Enums
+use Illuminate\Foundation\Auth\User as Authenticatable;
+// Traits
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 // Scopes
 // use DDD\App\Scopes\OrganizationScope;
 
 class User extends Authenticatable
 {
-    use HasFactory,
-        Notifiable,
+    use BelongsToOrganization,
         HasApiTokens,
-        BelongsToOrganization;
+        HasFactory,
+        Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -57,13 +57,13 @@ class User extends Authenticatable
     ];
 
     // TODO: Move to a one to many (user belongs to many orgs)
-    public function organization()
+    public function organization(): BelongsTo
     {
-        return $this->belongsTo('DDD\Domain\Organizations\Organization');
+        return $this->belongsTo(\DDD\Domain\Organizations\Organization::class);
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
-        return $this->hasMany('DDD\Domain\Comments\Comment');
+        return $this->hasMany(\DDD\Domain\Comments\Comment::class);
     }
 }

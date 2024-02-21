@@ -2,23 +2,21 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
-
-// Models
 use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Pages\Page;
-
-// Requests
+// Vendors
 use DDD\Domain\Pages\Requests\PageStoreRequest;
+use DDD\Domain\Pages\Resources\PageResource;
+// Models
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+// Requests
+use Spatie\QueryBuilder\AllowedFilter;
 // use DDD\Domain\Pages\Requests\PageUpdateRequest;
 
 // Resources
-use DDD\Domain\Pages\Resources\PageResource;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PageController extends Controller
 {
@@ -52,7 +50,7 @@ class PageController extends Controller
         return new PageResource($page->load(['status', 'category', 'user']));
     }
 
-    public function update(Organization $organization, Request $request)
+    public function update(Organization $organization, Request $request): JsonResponse
     {
         $pages = Page::whereIn('id', $request->ids)->get();
 
@@ -65,7 +63,7 @@ class PageController extends Controller
         ], 200);
     }
 
-    public function destroy(Organization $organization, Request $request)
+    public function destroy(Organization $organization, Request $request): JsonResponse
     {
         Page::whereIn('id', $request->ids)->delete();
 

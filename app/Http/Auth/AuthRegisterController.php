@@ -2,23 +2,19 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Users\User;
-
-// Requests
 use DDD\Http\Auth\Requests\AuthRegisterRequest;
+// Models
+use Illuminate\Http\JsonResponse;
+// Requests
+use Illuminate\Support\Facades\Hash;
 
 // Resources
-use DDD\Domain\Organizations\Resources\OrganizationResource;
 
 class AuthRegisterController extends Controller
 {
-    public function __invoke(AuthRegisterRequest $request)
+    public function __invoke(AuthRegisterRequest $request): JsonResponse
     {
         $user = User::create([
             'name' => $request->name,
@@ -37,7 +33,7 @@ class AuthRegisterController extends Controller
                 'access_token' => $token,
                 'name' => $user->name,
                 'email' => $user->email,
-            ]
+            ],
         ], 200);
     }
 }

@@ -2,16 +2,15 @@
 
 namespace DDD\Domain\Crawls;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-// Traits
 use DDD\App\Traits\BelongsToOrganization;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Traits
+use Illuminate\Database\Eloquent\Model;
 
 class Crawl extends Model
 {
-    use HasFactory,
-        BelongsToOrganization;
+    use BelongsToOrganization,
+        HasFactory;
 
     protected $guarded = [
         'id',

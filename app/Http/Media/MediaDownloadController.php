@@ -2,9 +2,7 @@
 
 namespace DDD\Http\Media;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
 // Models
 use DDD\Domain\Media\Media;
 

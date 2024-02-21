@@ -8,25 +8,21 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('designs', function (Blueprint $table) {
             $table->foreignId('parent_id')->nullable();
 
             // Foreign constraints
             $table->foreign('parent_id')->references('id')->on('designs')->onDelete('cascade');
-       });
+        });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('designs', function (Blueprint $table) {
             $table->dropColumn('parent_id');

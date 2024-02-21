@@ -2,21 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
-
-// Models
 use DDD\Domain\Users\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+// Models
+use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $admins = [
             [
@@ -34,7 +31,7 @@ class UsersSeeder extends Seeder
                 'organization_id' => 1,
                 'email_verified_at' => now(),
                 'password' => Hash::make(''),
-            ]
+            ],
         ];
 
         foreach ($admins as $admin) {
