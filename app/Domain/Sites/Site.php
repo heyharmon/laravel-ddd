@@ -31,6 +31,6 @@ class Site extends Model
      */
     public function pages()
     {
-        return $this->hasMany('DDD\Domain\Pages\Page');
+        return $this->hasMany(\DDD\Domain\Pages\Page::class);
     }
 }

@@ -19,12 +19,12 @@ class Comment extends Model
     // TODO: Use the BelongsToUser Trait
     public function user()
     {
-        return $this->belongsTo('DDD\Domain\Users\User');
+        return $this->belongsTo(\DDD\Domain\Users\User::class);
     }
 
     public function children()
     {
-        return $this->hasMany('DDD\Domain\Comments\Comment', 'parent_id', 'id');
+        return $this->hasMany(\DDD\Domain\Comments\Comment::class, 'parent_id', 'id');
     }
 
     public function commentable()

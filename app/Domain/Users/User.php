@@ -57,11 +57,11 @@ class User extends Authenticatable
     // TODO: Move to a one to many (user belongs to many orgs)
     public function organization()
     {
-        return $this->belongsTo('DDD\Domain\Organizations\Organization');
+        return $this->belongsTo(\DDD\Domain\Organizations\Organization::class);
     }
 
     public function comments()
     {
-        return $this->hasMany('DDD\Domain\Comments\Comment');
+        return $this->hasMany(\DDD\Domain\Comments\Comment::class);
     }
 }

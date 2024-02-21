@@ -29,7 +29,7 @@ class Organization extends Model implements HasMedia
      */
     public function crawls()
     {
-        return $this->hasMany('DDD\Domain\Crawls\Crawl');
+        return $this->hasMany(\DDD\Domain\Crawls\Crawl::class);
     }
 
     /**
@@ -39,7 +39,7 @@ class Organization extends Model implements HasMedia
      */
     public function lastCrawl()
     {
-        return $this->hasOne('DDD\Domain\Crawls\Crawl')->latest();
+        return $this->hasOne(\DDD\Domain\Crawls\Crawl::class)->latest();
     }
 
     /**
@@ -49,7 +49,7 @@ class Organization extends Model implements HasMedia
      */
     public function users()
     {
-        return $this->hasMany('DDD\Domain\Users\User');
+        return $this->hasMany(\DDD\Domain\Users\User::class);
     }
 
     /**
@@ -59,7 +59,7 @@ class Organization extends Model implements HasMedia
      */
     public function invitations()
     {
-        return $this->hasMany('DDD\Domain\Invitations\Invitation');
+        return $this->hasMany(\DDD\Domain\Invitations\Invitation::class);
     }
 
     /**
@@ -69,7 +69,7 @@ class Organization extends Model implements HasMedia
      */
     public function pages()
     {
-        return $this->hasMany('DDD\Domain\Pages\Page');
+        return $this->hasMany(\DDD\Domain\Pages\Page::class);
     }
 
     /**
@@ -79,7 +79,7 @@ class Organization extends Model implements HasMedia
      */
     public function redirects()
     {
-        return $this->hasMany('DDD\Domain\Redirects\Redirect');
+        return $this->hasMany(\DDD\Domain\Redirects\Redirect::class);
     }
 
     /**
@@ -89,7 +89,7 @@ class Organization extends Model implements HasMedia
      */
     public function teams()
     {
-        return $this->hasMany('DDD\Domain\Teams\Team');
+        return $this->hasMany(\DDD\Domain\Teams\Team::class);
     }
 
     /**
@@ -99,7 +99,7 @@ class Organization extends Model implements HasMedia
      */
     public function sites()
     {
-        return $this->hasMany('DDD\Domain\Sites\Site');
+        return $this->hasMany(\DDD\Domain\Sites\Site::class);
     }
 
     /**
@@ -109,6 +109,6 @@ class Organization extends Model implements HasMedia
      */
     public function designs()
     {
-        return $this->hasMany('DDD\Domain\Designs\Design');
+        return $this->hasMany(\DDD\Domain\Designs\Design::class);
     }
 }
