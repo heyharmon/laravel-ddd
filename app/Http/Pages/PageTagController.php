@@ -2,12 +2,11 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Pages\Page;
+// Models
 use DDD\Domain\Sites\Site;
+use Illuminate\Http\Request;
 
 class PageTagController extends Controller
 {

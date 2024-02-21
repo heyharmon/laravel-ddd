@@ -2,19 +2,14 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use DDD\App\Controllers\Controller;
-
-// Models
 use DDD\Domain\Users\User;
-
-// Requests
+// Models
 use DDD\Http\Auth\Requests\AuthRegisterRequest;
+// Requests
+use Illuminate\Support\Facades\Hash;
 
 // Resources
-use DDD\Domain\Organizations\Resources\OrganizationResource;
 
 class AuthRegisterController extends Controller
 {
@@ -37,7 +32,7 @@ class AuthRegisterController extends Controller
                 'access_token' => $token,
                 'name' => $user->name,
                 'email' => $user->email,
-            ]
+            ],
         ], 200);
     }
 }

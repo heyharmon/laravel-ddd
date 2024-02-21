@@ -2,10 +2,9 @@
 
 namespace DDD\App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-
-use DDD\App\Services\Crawler\CrawlerInterface;
 use DDD\App\Services\Crawler\CrawlerApify;
+use DDD\App\Services\Crawler\CrawlerInterface;
+use Illuminate\Support\ServiceProvider;
 
 class CrawlerServiceProvider extends ServiceProvider
 {

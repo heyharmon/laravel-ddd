@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('designs', function (Blueprint $table) {
             $table->renameColumn('designer', 'designer_name');
             $table->string('designer_email')->after('designer');
-       });
+        });
     }
 
     /**

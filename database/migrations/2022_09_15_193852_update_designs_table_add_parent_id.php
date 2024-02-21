@@ -18,7 +18,7 @@ return new class extends Migration
 
             // Foreign constraints
             $table->foreign('parent_id')->references('id')->on('designs')->onDelete('cascade');
-       });
+        });
     }
 
     /**

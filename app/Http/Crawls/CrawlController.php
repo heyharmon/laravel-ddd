@@ -2,24 +2,18 @@
 
 namespace DDD\Http\Crawls;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
 // Models
-use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Crawls\Crawl;
-
-// Services
 use DDD\App\Services\Crawler\CrawlerInterface as Crawler;
-
-// Jobs
+use DDD\Domain\Crawls\Crawl;
+// Services
 use DDD\Domain\Crawls\Jobs\CheckCrawlStatusJob;
-
-// Requests
+// Jobs
 use DDD\Domain\Crawls\Requests\CrawlStoreRequest;
-
-// Resources
+// Requests
 use DDD\Domain\Crawls\Resources\CrawlResource;
+// Resources
+use DDD\Domain\Organizations\Organization;
 
 class CrawlController extends Controller
 {
@@ -35,9 +29,9 @@ class CrawlController extends Controller
         $service = $crawler->crawlSite($request->url);
 
         $crawl = $organization->crawls()->create([
-            'url'        => $request->url,
-            'crawl_id'   => $service['crawl_id'],
-            'queue_id'   => $service['queue_id'],
+            'url' => $request->url,
+            'crawl_id' => $service['crawl_id'],
+            'queue_id' => $service['queue_id'],
             'results_id' => $service['results_id'],
         ]);
 

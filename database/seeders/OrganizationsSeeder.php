@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
-// Models
 use DDD\Domain\Organizations\Organization;
+// Models
+use Illuminate\Database\Seeder;
 
 class OrganizationsSeeder extends Seeder
 {

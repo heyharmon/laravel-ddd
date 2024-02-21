@@ -2,12 +2,9 @@
 
 namespace DDD\Http\Redirects;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
 // Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Redirects\Redirect;
 
 class RedirectImportController extends Controller
 {
@@ -21,10 +18,10 @@ class RedirectImportController extends Controller
             $organization->pages()->updateOrCreate(
                 ['url' => $cleanDestinationUrl],
                 [
-                    'http_status'   => $result['http_status'],
-                    'title'         => $result['title'],
-                    'wordcount'     => $result['wordcount'],
-                    'url'           => $cleanDestinationUrl,
+                    'http_status' => $result['http_status'],
+                    'title' => $result['title'],
+                    'wordcount' => $result['wordcount'],
+                    'url' => $cleanDestinationUrl,
                 ]
             );
         }

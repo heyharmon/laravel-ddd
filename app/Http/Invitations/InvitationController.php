@@ -2,22 +2,18 @@
 
 namespace DDD\Http\Invitations;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use DDD\App\Controllers\Controller;
-
-// Emails
-use DDD\Domain\Invitations\Mail\InvitationEmail;
-
-// Models
-use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Invitations\Invitation;
-
-// Requests
+use DDD\Domain\Invitations\Mail\InvitationEmail;
+// Emails
 use DDD\Domain\Invitations\Requests\InvitationStoreRequest;
-
-// Resources
+// Models
 use DDD\Domain\Invitations\Resources\InvitationResource;
+use DDD\Domain\Organizations\Organization;
+// Requests
+use Illuminate\Http\Request;
+// Resources
+use Illuminate\Support\Facades\Mail;
 
 class InvitationController extends Controller
 {

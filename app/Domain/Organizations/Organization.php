@@ -2,25 +2,23 @@
 
 namespace DDD\Domain\Organizations;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
+use DDD\App\Traits\HasComments;
+use DDD\App\Traits\HasMeta;
 // Vendors
+use DDD\App\Traits\HasSlug;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Traits
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-// Traits
-use DDD\App\Traits\HasComments;
-use DDD\App\Traits\HasSlug;
-use DDD\App\Traits\HasMeta;
-
 class Organization extends Model implements HasMedia
 {
-    use HasFactory,
-        InteractsWithMedia,
-        HasComments,
+    use HasComments,
+        HasFactory,
+        HasMeta,
         HasSlug,
-        HasMeta;
+        InteractsWithMedia;
 
     protected $guarded = ['id', 'slug'];
 

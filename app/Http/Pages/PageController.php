@@ -2,23 +2,20 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
-
-// Models
 use DDD\Domain\Organizations\Organization;
+// Vendors
 use DDD\Domain\Pages\Page;
-
-// Requests
 use DDD\Domain\Pages\Requests\PageStoreRequest;
+// Models
+use DDD\Domain\Pages\Resources\PageResource;
+use Illuminate\Http\Request;
+// Requests
+use Spatie\QueryBuilder\AllowedFilter;
 // use DDD\Domain\Pages\Requests\PageUpdateRequest;
 
 // Resources
-use DDD\Domain\Pages\Resources\PageResource;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PageController extends Controller
 {

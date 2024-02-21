@@ -2,9 +2,8 @@
 
 namespace DDD\App\Console\Commands;
 
-use Illuminate\Console\Command;
-
 use DDD\Domain\Designs\Design;
+use Illuminate\Console\Command;
 
 class UpdateDesignFonts extends Command
 {
@@ -34,7 +33,7 @@ class UpdateDesignFonts extends Command
         foreach ($designs as $design) {
             $variables = $design->getRawOriginal('variables');
 
-            if (!is_null($variables)) {
+            if (! is_null($variables)) {
 
                 // Update font objects
                 if (is_array($design->variables['font_primary'])) {
@@ -70,11 +69,10 @@ class UpdateDesignFonts extends Command
                 }
 
                 // Update the design
-                $design->update(['variables' =>
-                    array_merge($design->variables, [
-                        'font_primary' => $primary,
-                        'font_secondary' => $secondary,
-                    ])
+                $design->update(['variables' => array_merge($design->variables, [
+                    'font_primary' => $primary,
+                    'font_secondary' => $secondary,
+                ]),
                 ]);
             }
         }

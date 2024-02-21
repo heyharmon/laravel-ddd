@@ -2,20 +2,15 @@
 
 namespace DDD\Http\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use DDD\App\Controllers\Controller;
-
-// Models
-use DDD\Domain\Users\User;
 use DDD\Domain\Invitations\Invitation;
-
+// Models
+use DDD\Domain\Organizations\Resources\OrganizationResource;
+use DDD\Domain\Users\User;
 // Requests
 use DDD\Http\Auth\Requests\AuthRegisterWithInvitationRequest;
-
 // Resources
-use DDD\Domain\Organizations\Resources\OrganizationResource;
+use Illuminate\Support\Facades\Hash;
 
 class AuthRegisterWithInvitationController extends Controller
 {
@@ -39,8 +34,8 @@ class AuthRegisterWithInvitationController extends Controller
                 'access_token' => $token,
                 'name' => $user->name,
                 'email' => $user->email,
-                'organization' => new OrganizationResource($user->organization)
-            ]
+                'organization' => new OrganizationResource($user->organization),
+            ],
         ], 200);
     }
 }

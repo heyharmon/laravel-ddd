@@ -15,7 +15,7 @@ class MetaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            $this->key => $this->value
+            $this->key => $this->value,
         ];
     }
 }

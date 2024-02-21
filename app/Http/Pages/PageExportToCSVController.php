@@ -2,36 +2,32 @@
 
 namespace DDD\Http\Pages;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Organizations\Organization;
 // Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
 
 // Models
-use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Pages\Page;
+use Illuminate\Http\Request;
 
 class PageExportToCSVController extends Controller
 {
     public function export(Organization $organization, Request $request)
     {
-        $fileName = $organization->slug . '-pages.csv';
+        $fileName = $organization->slug.'-pages.csv';
 
         $pages = $organization->pages()->latest()->get();
 
-        $headers = array(
-            "Content-type"        => "text/csv",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
-        );
+        $headers = [
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=$fileName",
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ];
 
-        $columns = array('Title', 'Url', 'Category', 'Wordcount');
+        $columns = ['Title', 'Url', 'Category', 'Wordcount'];
 
-        $callback = function() use($pages, $columns) {
+        $callback = function () use ($pages, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
 
@@ -41,12 +37,12 @@ class PageExportToCSVController extends Controller
                 $row['Category'] = $page->category ? $page->category->title : 'Uncategorized';
                 $row['Wordcount'] = $page->wordcount;
 
-                fputcsv($file, array(
+                fputcsv($file, [
                     $row['Title'],
                     $row['Url'],
                     $row['Category'],
                     $row['Wordcount'],
-                ));
+                ]);
             }
 
             fclose($file);

@@ -2,11 +2,10 @@
 
 namespace DDD\Domain\Invitations\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
-
-// Resources
 use DDD\Domain\Organizations\Resources\OrganizationResource;
+// Resources
 use DDD\Domain\Users\Resources\UserResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class InvitationResource extends JsonResource
 {

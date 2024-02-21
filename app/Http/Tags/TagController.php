@@ -2,14 +2,12 @@
 
 namespace DDD\Http\Tags;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
+use DDD\Domain\Tags\Resources\TagResource;
 // Models
 use DDD\Domain\Tags\Tag;
-
 // Resources
-use DDD\Domain\Tags\Resources\TagResource;
+use Illuminate\Http\Request;
 
 class TagController extends Controller
 {

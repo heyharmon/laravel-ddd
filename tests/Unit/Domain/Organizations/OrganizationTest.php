@@ -2,13 +2,12 @@
 
 namespace Tests\Unit\Domain\Organizations;
 
-use Tests\TestCase;
-
+use DDD\Domain\Files\File;
 // Models
 use DDD\Domain\Organizations\Organization;
-use DDD\Domain\Users\User;
 use DDD\Domain\Teams\Team;
-use DDD\Domain\Files\File;
+use DDD\Domain\Users\User;
+use Tests\TestCase;
 
 class OrganizationTest extends TestCase
 {

@@ -2,22 +2,18 @@
 
 namespace DDD\Http\Designs;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Vendors
-use Spatie\QueryBuilder\QueryBuilder;
-
-// Models
-use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Designs\Design;
-
-// Requests
+// Vendors
 use DDD\Domain\Designs\Requests\DesignStoreRequest;
+// Models
 use DDD\Domain\Designs\Requests\DesignUpdateRequest;
-
-// Resources
 use DDD\Domain\Designs\Resources\DesignResource;
+// Requests
+use DDD\Domain\Organizations\Organization;
+use Illuminate\Http\Request;
+// Resources
+use Spatie\QueryBuilder\QueryBuilder;
 
 class DesignController extends Controller
 {

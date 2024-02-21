@@ -2,8 +2,8 @@
 
 namespace DDD\Domain\Crawls\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CrawlStoreRequest extends FormRequest
@@ -26,7 +26,7 @@ class CrawlStoreRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'url' => parse_url($this->url, PHP_URL_SCHEME) . '://' . parse_url($this->url, PHP_URL_HOST),
+            'url' => parse_url($this->url, PHP_URL_SCHEME).'://'.parse_url($this->url, PHP_URL_HOST),
         ]);
     }
 
@@ -51,7 +51,7 @@ class CrawlStoreRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'message' => 'The given data was invalid.',
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
         ], 422));
     }
 }

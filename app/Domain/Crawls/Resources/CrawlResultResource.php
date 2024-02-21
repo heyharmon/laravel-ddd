@@ -15,11 +15,11 @@ class CrawlResultResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'http_status'     => $this['http_status'],
-            'title'           => $this['title'],
-            'wordcount'       => $this['wordcount'],
-            'redirected'      => $this['redirected'],
-            'requested_url'   => $this['requested_url'],
+            'http_status' => $this['http_status'],
+            'title' => $this['title'],
+            'wordcount' => $this['wordcount'],
+            'redirected' => $this['redirected'],
+            'requested_url' => $this['requested_url'],
             'destination_url' => $this['destination_url'],
         ];
     }

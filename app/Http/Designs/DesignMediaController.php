@@ -2,16 +2,13 @@
 
 namespace DDD\Http\Designs;
 
-use Illuminate\Http\Request;
 use DDD\App\Controllers\Controller;
-
-// Models
-use DDD\Domain\Organizations\Organization;
 use DDD\Domain\Designs\Design;
-use DDD\Domain\Designs\Media;
-
-// Resources
+// Models
 use DDD\Domain\Media\Resources\MediaResource;
+use DDD\Domain\Organizations\Organization;
+// Resources
+use Illuminate\Http\Request;
 
 class DesignMediaController extends Controller
 {
